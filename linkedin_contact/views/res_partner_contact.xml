@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--
+        ==========
+        Contact
+        ==========
+        -->
+         <record model="ir.ui.view" id="linkedin_partner_contact_form">
+        <field name="name">linkedin.res.partner.contact.form</field>
+        <field name="model">res.partner.contact</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="base_contact.view_partner_contact_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@string='Notes']" position="before">
+                <page string="LinkedIn" groups="base.group_user">
+                    <field name="linkedin"/>
+                    <newline/>
+                    <group col="4" colspan="4" groups="base.group_user">
+                        <separator string="Linked In Personal Informations" colspan="4" />
+                        <newline/>
+                        <field name="linkedin_profile_id" colspan="4" />
+                        <field name="linkedin_first_name" colspan="4" />
+                        <field name="linkedin_last_name" colspan="4" />
+                        <field name="linkedin_languages" colspan="4" />
+                    </group>
+                    <group col="4" colspan="4" groups="base.group_user">
+                        <separator string="Linked In Job Informations" colspan="4" />
+                        <newline/>
+                        <field name="linkedin_headline" colspan="4" />
+                        <field name="linkedin_skills" colspan="4" />
+                        <field name="linkedin_specialties" colspan="4" />
+                        <field name="linkedin_industry" colspan="4" />
+                        <field name="linkedin_honors" colspan="4" />
+                        <field name="linkedin_positions" colspan="4" nolabel="1">
+                            <tree >
+                                <field name="ref"/>
+                                <field name="title"/>
+                                <field name="summary"/>
+                                <field name="company"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                            </tree>
+                            <form>
+                                <field name="ref"/>
+                                <field name="title"/>
+                                <field name="summary"/>
+                                <field name="company"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                            </form>
+                        </field>
+                    </group>
+                    <group col="4" colspan="4" groups="base.group_user">
+                        <separator string="Linked In Other Informations" colspan="4" />
+                        <newline/>
+                        <field name="linkedin_location" colspan="4" />
+                        <field name="linkedin_location_country" colspan="4" />
+                        <field name="linkedin_interests" colspan="4" />
+                        <field name="linkedin_picture_url" colspan="4" widget="url"/>
+                        <field name="linkedin_public_url" colspan="4" widget="url"/>
+                    </group>
+                    <newline/>
+                    <button string="Update from LinkedIn Profiles" name="calllinkedin" type="object" icon="gtk-yes" groups="base.group_erp_manager" colspan="4"/>
+                </page>
+            </xpath>
+        </field>
+        </record>
+        
+        <!-- Linkedin Position Extension-->
+        <record id="linkedin_contact_position_filter" model="ir.ui.view">
+            <field name="name">linkedin.contact.position.select</field>
+            <field name="model">linkedin.position</field>
+            <field name="type">search</field>
+            <field name="inherit_id" ref="linkedin_base.linkedin_position_filter"/>
+            <field name="arch" type="xml">
+                <field name="ref" position="after">
+                    <field name="contact_id"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="linkedin_contact_position_tree" model="ir.ui.view">
+            <field name="name">linkedin.contact.position.tree</field>
+            <field name="model">linkedin.position</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="linkedin_base.linkedin_position_tree"/>
+            <field name="arch" type="xml">
+                <field name="ref" position="after">
+                    <field name="contact_id"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="linkedin_contact_position_form" model="ir.ui.view">
+            <field name="name">linkedin.contact.position.form</field>
+            <field name="model">linkedin.position</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="linkedin_base.linkedin_position_form"/>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <field name="ref" position="after">
+                    <field name="contact_id"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- Linkedin Backlog extension -->
+        <record id="linkedin_contact_backlog_form" model="ir.ui.view">
+            <field name="name">linkedin.contact.backlog.form</field>
+            <field name="model">linkedin.backlog</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="linkedin_base.linkedin_backlog_form"/>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <field name="linkedin_profile_id" position="before">
+                    <field name="contact_id"/>
+                </field>
+                <field name="linkedin_public_url" position="after">
+                    <newline/>
+                    <button string="Copy on contact profile" name="copy_contact_profile" type="object" icon="gtk-yes" groups="base.group_erp_manager" colspan="4"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- Opening backlog when double clicking on contact -->
+        <act_window
+            domain="[('contact_id', '=', active_id)]"
+            id="act_contact_backlog"
+            name="Contacts Backlogs"
+            res_model="linkedin.backlog"
+            src_model="res.partner.contact"
+            view_mode="tree,form,calendar,graph"
+            view_type="form"/>
+    </data>
+</openerp>

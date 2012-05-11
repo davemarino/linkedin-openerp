@@ -1,0 +1,7 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"linkedin_configuration_base.group_erp_manager","linkedin_configuration base.group_erp_manager","model_linkedin_configuration","base.group_erp_manager",1,1,1,1
+"linkedin_position_base.group_erp_manager","linkedin_position base.group_erp_manager","model_linkedin_position","base.group_erp_manager",1,1,1,1
+"linkedin_backlog_base.group_erp_manager","linkedin_backlog base.group_erp_manager","model_linkedin_backlog","base.group_erp_manager",1,1,1,1
+"linkedin_configuration_base.group_user","linkedin_configuration base.group_user","model_linkedin_configuration","base.group_user",1,0,0,0
+"linkedin_position_base.group_user","linkedin_position base.group_user","model_linkedin_position","base.group_user",1,0,0,0
+"linkedin_backlog_base.group_user","linkedin_backlog base.group_user","model_linkedin_backlog","base.group_user",1,0,0,0

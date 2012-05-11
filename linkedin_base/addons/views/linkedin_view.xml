@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Linkedin position -->
+        <record id="linkedin_position_filter" model="ir.ui.view">
+            <field name="name">linkedin.position.select</field>
+            <field name="model">linkedin.position</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Search Positions">
+                    <field name="ref"/>
+                    <field name="title"/>
+                    <field name="summary"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="company"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="linkedin_position_tree" model="ir.ui.view">
+            <field name="name">linkedin.position.tree</field>
+            <field name="model">linkedin.position</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Linkedin Position">
+                    <field name="ref"/>
+                    <field name="title"/>
+                    <field name="summary"/>
+                    <field name="company"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="linkedin_position_form" model="ir.ui.view">
+            <field name="name">linkedin.position.form</field>
+            <field name="model">linkedin.position</field>
+            <field name="type">form</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <form string="Linkedin Position">
+                    <field name="ref"/>
+                    <field name="title"/>
+                    <field name="summary"/>
+                    <field name="company"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="linkedin_position_action" model="ir.actions.act_window">
+            <field name="name">Linkedin Positions</field>
+            <field name="res_model">linkedin.position</field>
+            <field name="view_type">form</field>
+            <field name="domain">[]</field>
+            <field name="view_mode">tree,form,gantt</field>
+            <field name="view_id" ref="linkedin_position_tree"/>
+            <field name="search_view_id" ref="linkedin_position_filter"/>
+            <field name="context">{}</field>
+        </record>
+
+        <!-- Linkedin Configuration -->
+        <record id="linkedin_configuration_filter" model="ir.ui.view">
+            <field name="name">linkedin.configuration.select</field>
+            <field name="model">linkedin.configuration</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Search Configuration">
+                    <field name="url"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="linkedin_configuration_tree" model="ir.ui.view">
+            <field name="name">linkedin.configuration.tree</field>
+            <field name="model">linkedin.configuration</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Linkedin Configuration">
+                    <field name="url"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="linkedin_configuration_form" model="ir.ui.view">
+            <field name="name">linkedin.configuration.form</field>
+            <field name="model">linkedin.configuration</field>
+            <field name="type">form</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <form string="Linkedin Configuration">
+                    <field name="url"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="linkedin_configuration_action" model="ir.actions.act_window">
+            <field name="name">Linkedin Configuration</field>
+            <field name="res_model">linkedin.configuration</field>
+            <field name="view_type">form</field>
+            <field name="domain">[]</field>
+            <field name="view_mode">tree,form,gantt</field>
+            <field name="view_id" ref="linkedin_configuration_tree"/>
+            <field name="search_view_id" ref="linkedin_configuration_filter"/>
+            <field name="context">{}</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="linkedin_configuration_list_action">
+            <field name="name">Configuration List</field>
+            <field name="res_model">linkedin.configuration</field>
+            <field name="view_type">tree</field>
+            <field name="domain">[]</field>
+        </record>
+
+        <!-- Linkedin Backlog -->
+         <record id="linkedin_backlog_filter" model="ir.ui.view">
+            <field name="name">linkedin.backlog.select</field>
+            <field name="model">linkedin.backlog</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Search Backlog Profiles">
+                    <field name="linkedin_profile_id" colspan="4" />
+                    <field name="linkedin_first_name" colspan="4" />
+                    <field name="linkedin_last_name" colspan="4" />
+                </search>
+            </field>
+        </record>
+
+        <record id="linkedin_backlog_tree" model="ir.ui.view">
+            <field name="name">linkedin.backlog.tree</field>
+            <field name="model">linkedin.backlog</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Linkedin Backlog Profiles">
+                    <field name="linkedin_profile_id" colspan="4" />
+                    <field name="linkedin_first_name" colspan="4" />
+                    <field name="linkedin_last_name" colspan="4" />
+                    <field name="linkedin_languages" colspan="4" />
+                    <field name="linkedin_headline" colspan="4" />
+                    <field name="linkedin_skills" colspan="4" />
+                    <field name="linkedin_specialties" colspan="4" />
+                    <field name="linkedin_industry" colspan="4" />
+                    <field name="linkedin_honors" colspan="4" />
+                    <field name="linkedin_positions" colspan="4" nolabel="1"/>
+                    <field name="linkedin_location" colspan="4" />
+                    <field name="linkedin_location_country" colspan="4" />
+                    <field name="linkedin_interests" colspan="4" />
+                    <field name="linkedin_picture_url" colspan="4" widget="url"/>
+                    <field name="linkedin_public_url" colspan="4" widget="url"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="linkedin_backlog_form" model="ir.ui.view">
+            <field name="name">linkedin.backlog.form</field>
+            <field name="model">linkedin.backlog</field>
+            <field name="type">form</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <form string="Linkedin Backlog Profile">
+                    <separator string="Linked In Personal Informations" colspan="4" />
+                    <newline/>
+                    <field name="linkedin_profile_id" colspan="4" />
+                    <field name="linkedin_first_name" colspan="4" />
+                    <field name="linkedin_last_name" colspan="4" />
+                    <field name="linkedin_languages" colspan="4" />
+                    <separator string="Linked In Job Informations" colspan="4" />
+                    <newline/>
+                    <field name="linkedin_headline" colspan="4" />
+                    <field name="linkedin_skills" colspan="4" />
+                    <field name="linkedin_specialties" colspan="4" />
+                    <field name="linkedin_industry" colspan="4" />
+                    <field name="linkedin_honors" colspan="4" />
+                    <field name="linkedin_positions" colspan="4" nolabel="1">
+                        <tree >
+                            <field name="ref"/>
+                            <field name="title"/>
+                            <field name="summary"/>
+                            <field name="company"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                        </tree>
+                        <form>
+                            <field name="ref"/>
+                            <field name="title"/>
+                            <field name="summary"/>
+                            <field name="company"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                        </form>
+                    </field>
+                    <separator string="Linked In Other Informations" colspan="4" />
+                    <newline/>
+                    <field name="linkedin_location" colspan="4" />
+                    <field name="linkedin_location_country" colspan="4" />
+                    <field name="linkedin_interests" colspan="4" />
+                    <field name="linkedin_picture_url" colspan="4" widget="url"/>
+                    <field name="linkedin_public_url" colspan="4" widget="url"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="linkedin_backlog_action" model="ir.actions.act_window">
+            <field name="name">Linkedin Backlog</field>
+            <field name="res_model">linkedin.backlog</field>
+            <field name="view_type">form</field>
+            <field name="domain">[]</field>
+            <field name="view_mode">tree,form,gantt</field>
+            <field name="view_id" ref="linkedin_backlog_tree"/>
+            <field name="search_view_id" ref="linkedin_backlog_filter"/>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem id="linkedin_menu" name="LinkedIn OpenErp"
+            web_icon="addons/data/linkederp.jpg"
+            web_icon_hover="addons/data/linkederp-hover.jpg"/>
+
+        <menuitem id="position_menu" name="Linkedin Position"
+            parent="linkedin_menu" sequence="0"
+            action=""/>
+
+        <menuitem id="configuration_menu" name="Linkedin Configuration"
+            parent="linkedin_menu" sequence="0"
+            action=""/>
+
+        <menuitem id="backlog_menu" name="Linkedin Backlog Profiles"
+            parent="linkedin_menu" sequence="0"
+            action=""/>
+
+        <menuitem id="linkedin_position_menu" name="Linkedin Position"
+            parent="position_menu" sequence="0"
+            action="linkedin_position_action"/>
+
+        <menuitem id="linkedin_configuration_menu" name="Linkedin Configuration"
+            parent="configuration_menu" sequence="0"
+            action="linkedin_configuration_action"/>
+
+        <menuitem id="linkedin_configuration_list_menu" name="Linkedin Configuration List"
+            parent="configuration_menu" sequence="1"
+            action="linkedin_configuration_list_action"/>
+
+        <menuitem id="linkedin_backlog_menu" name="Linkedin Backlog Profiles"
+            parent="backlog_menu" sequence="1"
+            action="linkedin_backlog_action"/>
+    </data>
+</openerp>
